@@ -47,7 +47,7 @@ P_compare <- ggplot()+
 
 ggsave('Pip_ss_vs_Infusion_rate.pdf', P_compare, width = 7, height = 5)
 
-#Conclusion
+# Conclusion
 
 The simulated data show a similar trend and variability to the observed
 dataset, supporting the use of simple assumptions for exploratory

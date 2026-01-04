@@ -6,7 +6,7 @@ assumptions.
 
 ## Related Work
 This simulation builds on the dose–exposure relationship estimated in
-the companion project: [piperacillin-dose-exposure-regression]
+the companion project: [piperacillin-dose-exposure-regression] https://github.com/Ketsia304/Piperacillin-Dose-Exposure-Modelling-Using-Linear-Regression?tab=readme-ov-file#piperacillin-dose-exposure-modelling-using-linear-regression
 
 ## Methods
 - Clearance was simulated as a log-normally distributed parameter to ensure

@@ -1,0 +1,37 @@
+library(tidyverse)
+
+set.seed(123)
+
+ID <- seq(1,150, by=1)
+
+infusion_rate <- rep(c(15, seq(30,270, by=30)), each=15)
+
+
+Clearance <- exp(rnorm(mean=log(13),sd=0.2,n=150)) # Clearance: log-normal to ensure positivity
+
+Pip_ss <- round(infusion_rate/Clearance,2)
+
+Simulated_piperacillin <- data.frame(ID,infusion_rate, Pip_ss)
+
+# ----- Comparison with observed data -----
+
+Observed_Piperacillin <- read_csv("https://raw.githubusercontent.com/dlonsdal/SGUL_PK_data/main/pip_ss.csv")
+
+P_compare <- ggplot()+
+  geom_point(
+    data = Simulated_piperacillin, 
+    aes(infusion_rate,Pip_ss),
+    alpha = 0.6) +
+  geom_point(
+    data= Observed_Piperacillin, 
+    aes(infusion_rate, pip_ss), 
+    colour = 'red')+
+  labs(
+    x = 'Infusion Rate (mg/hour)',
+    y = 'Steady-State Concentration (mg/L)',
+    subtitle = 'Red = observed data, Black = siumlated data')+
+  theme_bw() 
+
+ggsave('Pip_ss_vs_Infusion_rate.pdf', P_compare, width = 7, height = 5)
+
+
